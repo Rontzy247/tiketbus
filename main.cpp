@@ -1,22 +1,7 @@
 #include <iostream>
-#include <iomanip>
-#include <sstream>
-
 using namespace std;
 
-void formatRupiah(int angka) {
-    string hasil = to_string(angka);
-    int posisi = hasil.length() - 3;
-
-    while (posisi > 0) {
-        hasil.insert(posisi, ".");
-        posisi -= 3;
-    }
-
-    return hasil;
-}
-
-int main() {
+void tampilkanMenu() {
     cout << "===================================\n";
     cout << "       PROGRAM TIKET BUS\n";
     cout << "===================================\n";
@@ -24,6 +9,22 @@ int main() {
     cout << "2. Malang - Pasuruan : Rp20.000\n";
     cout << "3. Malang - Jombang  : Rp25.000\n";
     cout << "===================================\n";
+}
+
+void tampilkanTiket(string tujuan, int harga, int jumlah) {
+    int total = harga * jumlah;
+
+    cout << "\n========== TIKET BUS ==========\n";
+    cout << "Tujuan           : " << tujuan << "\n";
+    cout << "Harga per tiket  : Rp " << harga << "\n";
+    cout << "Jumlah penumpang : " << jumlah << "\n";
+    cout << "Total pembayaran : Rp " << total << "\n";
+    cout << "================================\n";
+    cout << "Terima kasih telah memesan tiket!\n";
+}
+
+int main() {
+    tampilkanMenu();
 
     int pilihan;
     cout << "Pilih tujuan (1/2/3): ";
@@ -50,15 +51,12 @@ int main() {
     cout << "Masukkan jumlah penumpang: ";
     cin >> jumlah;
 
-    int total = harga * jumlah;
+    if (jumlah <= 0) {
+        cout << "Jumlah penumpang harus lebih dari 0!\n";
+        return 0;
+    }
 
-    cout << "\n========== TIKET BUS ==========\n";
-    cout << "Tujuan           : " << tujuan << "\n";
-    cout << "Harga per tiket  : Rp " << formatRupiah(harga) << "\n";
-    cout << "Jumlah penumpang : " << jumlah << "\n";
-    cout << "Total pembayaran : Rp " << formatRupiah(total) << "\n";
-    cout << "================================\n";
-    cout << "Terima kasih telah memesan tiket!\n";
+    tampilkanTiket(tujuan, harga, jumlah);
 
     return 0;
 }
