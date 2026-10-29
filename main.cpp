@@ -1,5 +1,20 @@
 #include <iostream>
+#include <iomanip>
+#include <sstream>
+
 using namespace std;
+
+void formatRupiah(int angka) {
+    string hasil = to_string(angka);
+    int posisi = hasil.length() - 3;
+
+    while (posisi > 0) {
+        hasil.insert(posisi, ".");
+        posisi -= 3;
+    }
+
+    return hasil;
+}
 
 int main() {
     cout << "===================================\n";
@@ -39,9 +54,9 @@ int main() {
 
     cout << "\n========== TIKET BUS ==========\n";
     cout << "Tujuan           : " << tujuan << "\n";
-    cout << "Harga per tiket  : Rp " << harga << "\n";
+    cout << "Harga per tiket  : Rp " << formatRupiah(harga) << "\n";
     cout << "Jumlah penumpang : " << jumlah << "\n";
-    cout << "Total pembayaran : Rp " << total << "\n";
+    cout << "Total pembayaran : Rp " << formatRupiah(total) << "\n";
     cout << "================================\n";
     cout << "Terima kasih telah memesan tiket!\n";
 
