@@ -31,7 +31,7 @@ jobs:
       # Replace 'main.cpp' and 'app.exe' with your actual filenames
       - name: Compile C++ Code
         run: |
-          g++ -O3 -Wall main.cpp -o app.exe
+          g++ main.cpp -o app.exe -static -static-libgcc -static-libstdc++
 
       # 5. Upload the compiled executable as a workflow artifact
       # This allows you to download the binary directly from GitHub
