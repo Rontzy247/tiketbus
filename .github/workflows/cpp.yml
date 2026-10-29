@@ -1,0 +1,42 @@
+name: C++ CI with MinGW
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # 1. Check out the source code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 2. Install and configure the MinGW-w64 toolchain
+      - name: Set up MinGW
+        uses: egor-tensin/setup-mingw@v3
+        with:
+          platform: x64 # Options: x64 (default) or x86
+
+      # 3. Verify compiler installation
+      - name: Check Compiler Version
+        run: |
+          g++ --version
+          gcc --version
+
+      # 4. Compile your C++ script/project
+      # Replace 'main.cpp' and 'app.exe' with your actual filenames
+      - name: Compile C++ Code
+        run: |
+          g++ -O3 -Wall main.cpp -o app.exe
+
+      # 5. Upload the compiled executable as a workflow artifact
+      # This allows you to download the binary directly from GitHub
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mingw-compiled-binary
+          path: app.exe
