@@ -57,6 +57,6 @@ int main() {
     }
 
     tampilkanTiket(tujuan, harga, jumlah);
-
+    system("pause");
     return 0;
 }
