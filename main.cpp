@@ -1,8 +1,10 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 void tampilkanMenu() {
-    cout << "===================================\n";
+    cout << "\n===================================\n";
     cout << "       PROGRAM TIKET BUS\n";
     cout << "===================================\n";
     cout << "1. Malang - Surabaya : Rp35.000\n";
@@ -24,39 +26,52 @@ void tampilkanTiket(string tujuan, int harga, int jumlah) {
 }
 
 int main() {
-    tampilkanMenu();
+    string ulangi;
 
-    int pilihan;
-    cout << "Pilih tujuan (1/2/3): ";
-    cin >> pilihan;
+    do {
+        tampilkanMenu();
 
-    string tujuan;
-    int harga;
+        int pilihan;
+        cout << "Pilih tujuan (1/2/3): ";
+        cin >> pilihan;
 
-    if (pilihan == 1) {
-        tujuan = "Malang - Surabaya";
-        harga = 35000;
-    } else if (pilihan == 2) {
-        tujuan = "Malang - Pasuruan";
-        harga = 20000;
-    } else if (pilihan == 3) {
-        tujuan = "Malang - Jombang";
-        harga = 25000;
-    } else {
-        cout << "Pilihan tidak tersedia!\n";
-        return 0;
-    }
+        string tujuan;
+        int harga;
 
-    int jumlah;
-    cout << "Masukkan jumlah penumpang: ";
-    cin >> jumlah;
+        if (pilihan == 1) {
+            tujuan = "Malang - Surabaya";
+            harga = 35000;
+        } else if (pilihan == 2) {
+            tujuan = "Malang - Pasuruan";
+            harga = 20000;
+        } else if (pilihan == 3) {
+            tujuan = "Malang - Jombang";
+            harga = 25000;
+        } else {
+            cout << "Pilihan tidak tersedia!\n";
+            cout << "apakah anda mau memesan tiket lagi ketik (y/Y): ";
+            cin >> ulangi;
+            continue;
+        }
 
-    if (jumlah <= 0) {
-        cout << "Jumlah penumpang harus lebih dari 0!\n";
-        return 0;
-    }
+        int jumlah;
+        cout << "Masukkan jumlah penumpang: ";
+        cin >> jumlah;
 
-    tampilkanTiket(tujuan, harga, jumlah);
+        if (jumlah <= 0) {
+            cout << "Jumlah penumpang harus lebih dari 0!\n";
+            cout << "apakah anda mau memesan tiket lagi ketik (y/Y): ";
+            cin >> ulangi;
+            continue;
+        }
+
+        tampilkanTiket(tujuan, harga, jumlah);
+
+        cout << "\napakah anda mau memesan tiket lagi ketik (y/Y): ";
+        cin >> ulangi;
+
+    } while (ulangi == "y" || ulangi == "Y");
+
     system("pause");
     return 0;
 }
