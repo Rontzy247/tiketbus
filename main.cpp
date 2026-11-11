@@ -49,7 +49,7 @@ int main() {
             harga = 25000;
         } else {
             cout << "Pilihan tidak tersedia!\n";
-            cout << "apakah anda mau memesan tiket lagi ketik (y/Y): ";
+            cout << "gagal! silahkan memesan tiket ulang ketik (y/Y): ";
             cin >> ulangi;
             continue;
         }
@@ -60,7 +60,7 @@ int main() {
 
         if (jumlah <= 0) {
             cout << "Jumlah penumpang harus lebih dari 0!\n";
-            cout << "apakah anda mau memesan tiket lagi ketik (y/Y): ";
+            cout << "gagal! silahkan memesan tiket ulang ketik (y/Y): ";
             cin >> ulangi;
             continue;
         }
