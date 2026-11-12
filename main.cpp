@@ -67,7 +67,7 @@ int main() {
 
         tampilkanTiket(tujuan, harga, jumlah);
 
-        cout << "\napakah anda mau memesan tiket lagi ketik (y/Y): ";
+        cout << "\napakah anda mau memesan tiket lagi? ketik (y/Y), ingin mengakhiri ketik huruf selain (y/Y): ";
         cin >> ulangi;
 
     } while (ulangi == "y" || ulangi == "Y");
